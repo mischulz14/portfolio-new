@@ -11,7 +11,7 @@ export default function ButtonRounded({
 }: ButtonRoundedProps) {
   return (
     <button
-      className={`${additionalStyles} w-20 h-20 rounded-full bg-white border-2 `}
+      className={`${additionalStyles} w-24 h-24 rounded-full bg-white border-2 `}
     >
       {children}
     </button>
