@@ -7,3 +7,26 @@
     clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
   }
 }
+
+/* Page flip is here because tailwind doesn't support rotate-y */
+
+.page {
+  perspective: 1000px;
+}
+
+.page__front {
+  backface-visibility: hidden;
+}
+
+.page__back__content {
+  transform: rotateY(180deg);
+}
+
+.flipped.page__front,
+.flipped.page__back {
+  transform: rotateY(-180deg);
+}
+
+.flipped.page {
+  transform: rotateY(180deg);
+}
