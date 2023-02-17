@@ -4,6 +4,7 @@ import { Inter } from '@next/font/google';
 import styles from '@/styles/Home.module.css';
 import ButtonRounded from '@/components/atoms/ButtonRounded';
 import UpAndDownHover from '@/animations/UpAndDownHover';
+import Link from 'next/link';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -21,7 +22,9 @@ export default function Home() {
         </UpAndDownHover>
         <div className='absolute h-40 w-40  translate-y-12 z-[-1] border-2 rotate-45' />
         <div>
-          <ButtonRounded>Plain and Simple</ButtonRounded>
+          <Link href={'/book-portfolio'}>
+            <ButtonRounded>Plain and Simple</ButtonRounded>
+          </Link>
         </div>
         <div className='flex gap-32'>
           <ButtonRounded>In 3D</ButtonRounded>
