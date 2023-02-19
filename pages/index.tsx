@@ -28,7 +28,9 @@ export default function Home() {
         </div>
         <div className='flex gap-32'>
           <ButtonRounded>In 3D</ButtonRounded>
-          <ButtonRounded>In a game</ButtonRounded>
+          <Link href={'/game'}>
+            <ButtonRounded>In a game</ButtonRounded>
+          </Link>
         </div>
         <div>
           <ButtonRounded>Not at all</ButtonRounded>

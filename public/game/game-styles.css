@@ -1,0 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: white;
+}
+
+#game-canvas {
+  border: 2px solid red;
+  width: 350px;
+  height: 350px;
+}
