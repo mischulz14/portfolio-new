@@ -40,7 +40,7 @@ export default function BookPortfolio() {
           <button
             className={`absolute flex items-center justify-center rounded-lg hover:bg-gray-300 h-full w-20 bg-gray-200/20 transition-all duration-300 z-[9999] ${
               isBookOpen
-                ? 'sm:translate-x-[30vw] translate-x-[45vw]'
+                ? 'sm:translate-x-[31vw] translate-x-[45vw]'
                 : 'translate-x-0'
             } ${currentPage === 1 ? 'bg-gray-300' : ''}`}
             onClick={() => {
