@@ -7,7 +7,9 @@ export default function Game() {
       <Head>
         <title>My Game</title>
       </Head>
-      <div id='game-container'>Hi</div>
+      <div id='game-container'>
+        <canvas id='game-canvas' />
+      </div>
       <button className='test'>Click</button>
       <Script src='game/init.js' />
     </>
