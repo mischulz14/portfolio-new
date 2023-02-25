@@ -23,7 +23,7 @@ export default function BookPortfolio() {
           } relative book transition-all rounded-lg duration-500 sm:w-[35vw] w-[50vw]  min-h-[85vh] bg-white`}
         >
           <button
-            className={`absolute flex justify-center  items-center rounded-lg hover:bg-gray-300 h-full w-20 bg-gray-200/20 transition-all duration-500 z-[9999] ${
+            className={`absolute flex justify-center  items-center -left-20 rounded-lg hover:bg-gray-300 h-full w-20 bg-gray-200/20 transition-all duration-500 z-[9999] ${
               isBookOpen
                 ? 'sm:translate-x-[-35vw] translate-x-[-50vw]'
                 : 'translate-x-0'
@@ -40,7 +40,7 @@ export default function BookPortfolio() {
           <button
             className={`absolute flex items-center justify-center rounded-lg hover:bg-gray-300 h-full w-20 bg-gray-200/20 transition-all duration-300 z-[9999] ${
               isBookOpen
-                ? 'sm:translate-x-[31vw] translate-x-[45vw]'
+                ? 'sm:translate-x-[35vw] translate-x-[45vw]'
                 : 'translate-x-0'
             } ${currentPage === 1 ? 'bg-gray-300' : ''}`}
             onClick={() => {
@@ -91,6 +91,8 @@ export default function BookPortfolio() {
             }
             pageZIndex={1}
           />
+          {/* <div className='test w-[110%] h-32   absolute -bottom-[70px] left-0 bg-gray-200 z-[90000]' /> */}
+          {/* <div className='test-2 w-[110%] h-32   absolute -bottom-16 left-[-110%] bg-gray-200 z-[90000]' /> */}
         </div>
       </div>
     </>
