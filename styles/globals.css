@@ -8,6 +8,14 @@
   }
 }
 
+:root {
+  --bg-color: 235, 236, 240;
+
+  --shadow-color: 192, 184, 200;
+
+  --secondary-shadow-color: 255, 255, 255;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -19,6 +27,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
+  background-color: rgb(var(--bg-color));
 }
 
 /* Page flip is here because tailwind doesn't support rotate-y */
@@ -75,4 +84,95 @@ body {
 .test {
   box-shadow: 0px -1px 0px 0px #000, 0px -3px 0px 0px #fff,
     0px -5px 0px 0px #000;
+}
+
+.link {
+  border-radius: 150px;
+  background: #e0e0e0;
+  box-shadow: 16px 16px 32px #bebebe, -16px -16px 32px #ffffff;
+}
+
+/* RIPPLE animation */
+
+.ripple,
+.top {
+  aspect-ratio: 1;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  box-shadow: 0.4rem 0.4rem 0.8rem rgb(var(--shadow-color)),
+    -0.4rem -0.4rem 0.8rem rgb(var(--secondary-shadow-color));
+}
+
+.ripple {
+  position: absolute;
+  top: 0;
+}
+
+.top {
+  z-index: 4;
+  background-color: rgb(var(--bg-color));
+  background-image: linear-gradient(
+    -45deg,
+    rgb(var(--secondary-shadow-color), 0.3),
+    rgb(var(--shadow-color), 0.2)
+  );
+  cursor: pointer;
+  transition: box-shadow 200ms;
+  display: grid;
+  place-items: center;
+}
+
+.top:hover {
+  box-shadow: 0.8rem 0.8rem 1rem rgb(var(--shadow-color)),
+    -0.8rem -0.8rem 1rem rgb(var(--secondary-shadow-color));
+}
+
+.activate-ripple:hover > .ripple {
+  animation: ripple 3s linear infinite;
+}
+
+/* .top:hover p {
+  font-size: 1.1rem;
+} */
+
+/* .top:active {
+  box-shadow: inset 0.1rem 0.1rem 0.1rem rgb(var(--shadow-color)),
+    inset -0.1rem -0.1rem 0.1rem rgb(var(--secondary-shadow-color)),
+    0.4rem 0.4rem 0.8rem rgb(var(--shadow-color)),
+    -0.4rem -0.4rem 0.8rem rgb(var(--secondary-shadow-color));
+} */
+
+.paused {
+  animation-play-state: paused !important;
+}
+
+#i1 {
+  z-index: 3;
+}
+
+#i2 {
+  animation-delay: 2s;
+  z-index: 2;
+}
+
+#i3 {
+  animation-delay: 1s;
+  z-index: 1;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
 }

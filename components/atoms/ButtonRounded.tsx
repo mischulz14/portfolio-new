@@ -10,10 +10,11 @@ export default function ButtonRounded({
   additionalStyles,
 }: ButtonRoundedProps) {
   return (
-    <button
-      className={`${additionalStyles} w-24 h-24 rounded-full bg-white border-2 `}
-    >
-      {children}
+    <button className={`activate-ripple relative ${additionalStyles}`}>
+      <div className='top'>{children}</div>
+      <div className='ripple' id='i1'></div>
+      <div className='ripple' id='i2'></div>
+      <div className='ripple' id='i3'></div>
     </button>
   );
 }

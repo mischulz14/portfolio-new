@@ -14,25 +14,21 @@ export default function Home() {
       <Head>
         <meta></meta>
       </Head>
-      <div className='h-[100vh] w-[100vw] gap-10 flex items-center justify-center flex-col relative'>
+      <div className='h-[100vh] w-[100vw] flex items-center justify-center flex-col'>
         <UpAndDownHover>
           <h1 className='mb-8 font-bold text-lg'>
             How do you want to get to know me?
           </h1>
         </UpAndDownHover>
-        <div className='absolute h-40 w-40  translate-y-12 z-[-1] border-2 rotate-45' />
-        <div>
+
+        <div className='flex gap-24 p-10'>
           <Link href={'/book-portfolio'}>
             <ButtonRounded>Plain and Simple</ButtonRounded>
           </Link>
-        </div>
-        <div className='flex gap-32'>
           <ButtonRounded>In 3D</ButtonRounded>
           <Link href={'/game'}>
             <ButtonRounded>In a game</ButtonRounded>
           </Link>
-        </div>
-        <div>
           <ButtonRounded>Not at all</ButtonRounded>
         </div>
       </div>
