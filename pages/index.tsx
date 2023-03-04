@@ -29,7 +29,6 @@ export default function Home() {
           <Link href={'/game'}>
             <ButtonRounded>In a game</ButtonRounded>
           </Link>
-          <ButtonRounded>Not at all</ButtonRounded>
         </div>
       </div>
     </>
