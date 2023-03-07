@@ -7,11 +7,17 @@ export default function Game() {
       <Head>
         <title>My Game</title>
       </Head>
-      <div id='game-container'>
-        <canvas id='game-canvas' />
+      <Script type='module' src='game/init.js' />
+      <Script type='module' src='game/overworld.js' />
+      <div className='h-[100vh] bg-gray-600 flex justify-center items-center'>
+        <div className='game-container scale-125'>
+          <canvas
+            className='game-canvas border-2 border-gray-300'
+            width='400px'
+            height='400px'
+          />
+        </div>
       </div>
-      <button className='test'>Click</button>
-      <Script src='game/init.js' />
     </>
   );
 }

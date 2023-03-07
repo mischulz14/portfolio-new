@@ -1,7 +1,9 @@
-console.log('foo');
+import { Overworld } from './overworld.js';
 
-const testBtn = document.querySelector('.test');
+(function () {
+  const overworld = new Overworld({
+    element: document.querySelector('.game-container'),
+  });
 
-testBtn.addEventListener('click', function () {
-  console.log('bar');
-});
+  overworld.init();
+})();
