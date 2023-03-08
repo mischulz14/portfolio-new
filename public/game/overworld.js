@@ -1,48 +1,50 @@
+import { OverworldMap } from './overworldMap.js';
+import { DirectionInput } from './directionInput.js';
+
 export class Overworld {
   constructor(config) {
     this.element = config.element;
     this.canvas = this.element.querySelector('.game-canvas');
     this.ctx = this.canvas.getContext('2d');
+    this.map = null;
   }
 
+  // GameLoop
+
+  startGameLoop() {
+    const step = () => {
+      // clear the canvas
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+      // draw lower layer
+      this.map.drawLowerImage(this.ctx);
+
+      // draw the game objects
+      Object.values(this.map.gameObjects).forEach((gameObject) => {
+        gameObject.update({
+          arrow: this.directionInput.direction,
+        });
+        gameObject.sprite.draw(this.ctx);
+      });
+
+      // draw upper layer
+      this.map.drawUpperImage(this.ctx);
+
+      requestAnimationFrame(() => {
+        step();
+      });
+    };
+    step();
+  }
+
+  // initializing the game
   init() {
-    const image = new Image();
-    image.onload = () => {
-      this.ctx.drawImage(image, 0, 0);
-    };
-    image.src = 'game/assets/lab_incident.png';
+    this.map = new OverworldMap(window.OverworldMaps.Laboratory);
 
-    const x = 0;
-    const y = 0;
+    this.directionInput = new DirectionInput();
+    this.directionInput.init();
+    this.directionInput.direction; // 'up', 'down', 'left', 'right'
 
-    const shadow = new Image();
-    shadow.onload = () => {
-      this.ctx.drawImage(shadow, 0, 0, 64, 64, x + 3, y + 16, 64, 64);
-    };
-    shadow.src = 'game/assets/shadow.png';
-
-    const hero = new Image();
-    hero.onload = () => {
-      this.ctx.drawImage(
-        hero,
-        // left cut
-        0,
-        // top cut
-        0,
-        // width cut
-        64,
-        // height cut
-        64,
-        // left position
-        x,
-        // top position
-        y,
-        // width
-        64,
-        // height
-        64,
-      );
-    };
-    hero.src = 'game/assets/lab-character-spritesheet-medium.png';
+    this.startGameLoop();
   }
 }
