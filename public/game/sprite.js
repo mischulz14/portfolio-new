@@ -5,17 +5,22 @@ export class Sprite {
     this.image.src = config.src;
     this.image.onload = () => {
       this.isLoaded = true;
+      console.log('sprite loaded');
     };
 
     // setup the shadow
     this.shadow = new Image();
-    this.useShadow = config.useShadow || false;
-    if (this.useShadow) {
-      this.shadow.src = 'game/assets/shadow.png';
-    }
+    this.useShadow = config.useShadow;
+
+    this.shadow.src = this.useShadow ? 'game/assets/shadow.png' : '';
+
     this.shadow.onload = () => {
       this.isShadowLoaded = true;
+      console.log('shadow loaded');
     };
+    if (!this.useShadow) {
+      console.log('no shadow');
+    }
 
     // configuring animation and initial state
     this.animations = config.animations || {
@@ -29,8 +34,8 @@ export class Sprite {
   }
 
   draw(ctx) {
-    const x = this.gameObject.x;
-    const y = this.gameObject.y;
+    const x = this.gameObject.x + 16;
+    const y = this.gameObject.y - 10;
 
     this.isShadowLoaded &&
       ctx.drawImage(this.shadow, 0, 0, 64, 64, x + 3, y + 16, 64, 64);
