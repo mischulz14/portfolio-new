@@ -9,15 +9,19 @@ export default function Game() {
       </Head>
 
       <Script type='module' src='game/overworld.js' />
+      <Script type='module' src='game/directionInput.js' />
       <Script type='module' src='game/gameObject.js' />
       <Script type='module' src='game/sprite.js' />
+      <Script type='module' src='game/person.js' />
+      <Script type='module' src='game/overworldMap.js' />
+
       <Script type='module' src='game/init.js' />
       <div className='h-[100vh] bg-gray-600 flex justify-center items-center'>
         <div className='game-container scale-125'>
           <canvas
             className='game-canvas border-2 border-gray-300'
-            width='400px'
-            height='400px'
+            width='500px'
+            height='500px'
           />
         </div>
       </div>
