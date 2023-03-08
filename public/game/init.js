@@ -5,5 +5,7 @@ import { Overworld } from './overworld.js';
     element: document.querySelector('.game-container'),
   });
 
+  console.log('initialized');
+
   overworld.init();
 })();
