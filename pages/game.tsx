@@ -20,8 +20,8 @@ export default function Game() {
         <div className='game-container scale-125'>
           <canvas
             className='game-canvas border-2 border-gray-300'
-            width='500px'
-            height='500px'
+            width='700px'
+            height='400px'
           />
         </div>
       </div>
