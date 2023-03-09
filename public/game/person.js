@@ -18,6 +18,7 @@ export class Person extends GameObject {
 
   update(state) {
     this.updatePosition();
+    this.updateSprite(state);
 
     if (
       this.isPlayerControlled &&
@@ -45,6 +46,21 @@ export class Person extends GameObject {
       const [axis, direction] = this.directionUpdate[this.direction];
       this[axis] += direction;
       this.movingProgressRemaining -= 1;
+    }
+  }
+
+  updateSprite(state) {
+    if (
+      this.isPlayerControlled &&
+      this.movingProgressRemaining === 0 &&
+      !state.arrow
+    ) {
+      this.sprite.setAnimation('idle-' + this.direction);
+      return;
+    }
+
+    if (this.movingProgressRemaining > 0) {
+      this.sprite.setAnimation('walk-' + this.direction);
     }
   }
 }
