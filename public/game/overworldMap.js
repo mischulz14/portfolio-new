@@ -1,10 +1,10 @@
 import { utils } from './utils.js';
 import { Person } from './person.js';
-import { GameObject } from './gameObject.js';
 
 export class OverworldMap {
   constructor(config) {
     this.gameObjects = config.gameObjects || [];
+    this.walls = config.walls || {};
 
     this.lowerImage = new Image();
     this.lowerImage.src = config.lowerSrc;
@@ -26,32 +26,38 @@ export class OverworldMap {
     };
   }
 
-  drawLowerImage(ctx) {
-    ctx.drawImage(this.lowerImage, 0, 0);
+  drawLowerImage(ctx, cameraPerson) {
+    ctx.drawImage(
+      this.lowerImage,
+      utils.withGrid(20.5) - cameraPerson.x,
+      utils.withGrid(12) - cameraPerson.y,
+    );
   }
 
-  drawUpperImage(ctx) {
-    ctx.drawImage(this.upperImage, 0, 0);
+  drawUpperImage(ctx, cameraPerson) {
+    ctx.drawImage(
+      this.upperImage,
+      utils.withGrid(20.5) - cameraPerson.x,
+      utils.withGrid(12) - cameraPerson.y,
+    );
   }
 }
 
 window.OverworldMaps = {
   Laboratory: {
-    lowerSrc: 'game/assets/test-bg-2.png',
+    lowerSrc: 'game/assets/test-bg-3.png',
     upperSrc: '',
     gameObjects: {
       hero: new Person({
-        x: utils.withGrid(0),
-        y: utils.withGrid(0),
+        x: utils.withGrid(11),
+        y: utils.withGrid(12),
         useShadow: true,
         isPlayerControlled: true,
       }),
-      npc1: new Person({
-        x: utils.withGrid(4),
-        y: utils.withGrid(10),
-        useShadow: true,
-        isPlayerControlled: false,
-      }),
+    },
+    walls: {
+      '16,16': true,
+      [utils.asGridCoord(7, 6)]: true,
     },
   },
 };
