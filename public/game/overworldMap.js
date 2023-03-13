@@ -41,6 +41,21 @@ export class OverworldMap {
       utils.withGrid(12) - cameraPerson.y,
     );
   }
+
+  isSpaceTaken(currentX, currentY, direction) {
+    // console.log('x', currentX);
+    // console.log('y', currentY);
+    // const { x, y } = utils.nextPosition(currentX, currentY, direction);
+    // console.log(
+    //   'this walls coordinates',
+    //   this.walls,
+    //   'x to come',
+    //   x,
+    //   'y to come',
+    //   y,
+    // );
+    return this.walls[`${currentX},${currentY}`] || false;
+  }
 }
 
 window.OverworldMaps = {
@@ -56,8 +71,10 @@ window.OverworldMaps = {
       }),
     },
     walls: {
-      '16,16': true,
-      [utils.asGridCoord(7, 6)]: true,
+      [utils.asGridCoord(3, 4)]: true,
+      [utils.asGridCoord(3, 6)]: true,
+      [utils.asGridCoord(5, 4)]: true,
+      [utils.asGridCoord(5, 6)]: true,
     },
   },
 };

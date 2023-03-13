@@ -43,16 +43,16 @@ export class Sprite {
         [0, 1],
       ],
       'walk-left': [
-        [0, 2],
         [1, 2],
-        [2, 2],
+        [0, 2],
         [3, 2],
+        [0, 2],
       ],
       'walk-up': [
-        [0, 3],
         [1, 3],
-        [2, 3],
+        [0, 3],
         [3, 3],
+        [0, 3],
       ],
     };
     this.currentAnimation = config.currentAnimation || 'idleUp';

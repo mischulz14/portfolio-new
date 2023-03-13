@@ -16,6 +16,9 @@ export class Overworld {
       // clear the canvas
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
+      // console.log('x', this.map.gameObjects.hero.x);
+      // console.log('y', this.map.gameObjects.hero.y);
+
       // establish the camera
       const cameraPerson = this.map.gameObjects.hero;
 
@@ -24,8 +27,11 @@ export class Overworld {
 
       // draw the game objects
       Object.values(this.map.gameObjects).forEach((gameObject) => {
+        // console.log('x', gameObject.x);
+        // console.log('y', gameObject.y);
         gameObject.update({
           arrow: this.directionInput.direction,
+          map: this.map,
         });
         gameObject.sprite.draw(this.ctx, cameraPerson);
       });
@@ -43,10 +49,10 @@ export class Overworld {
   // initializing the game
   init() {
     this.map = new OverworldMap(window.OverworldMaps.Laboratory);
+    console.log(this.map.walls);
 
     this.directionInput = new DirectionInput();
     this.directionInput.init();
-    this.directionInput.direction; // 'up', 'down', 'left', 'right'
 
     this.startGameLoop();
   }
